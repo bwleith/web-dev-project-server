@@ -2,6 +2,7 @@ import reviewsModel from '../models/reviews-model.js';
 
 export const findLatestReviews = () => reviewsModel.find().sort({time: -1});
 export const findReviewsByImdbId = (imdbId) => reviewsModel.find({imdbId: imdbId}).sort({time: -1});
+export const findReviewsByUsername = (username) => reviewsModel.find({username: username}).sort({time: -1});
 export const createReview = (review) => reviewsModel.create(review);
 export const deleteReview = (reviewId) => reviewsModel.deleteOne({_id: reviewId});
 export const updateReview = (reviewId, review) => reviewsModel.updateOne({_id: reviewId}, {$set: review});
@@ -9,6 +10,7 @@ export const updateReview = (reviewId, review) => reviewsModel.updateOne({_id: r
 const reviewsDao = {
     findLatestReviews,
     findReviewsByImdbId,
+    findReviewsByUsername,
     createReview,
     deleteReview,
     updateReview

@@ -9,9 +9,15 @@ const reviewsController = (app) => {
 
 const findLatestReviews = async (req, res) => {
     const imdbId = req.query.imdbId;
+    const username = req.query.username;
     if (imdbId) {
         const reviewsByImdbId = await reviewsDao.findReviewsByImdbId(imdbId);
         res.json(reviewsByImdbId);
+        return;
+    }
+    else if (username) {
+        const reviewsByUsername = await reviewsDao.findReviewsByUsername(username);
+        res.json(reviewsByUsername);
         return;
     }
     const reviews = await reviewsDao.findLatestReviews();
