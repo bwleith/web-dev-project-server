@@ -2,7 +2,7 @@ import usersModel from '../models/users-model.js';
 
 export const findAllUsers = () => usersModel.find();
 export const findUserById = (uid) => usersModel.find({_id: uid});
-export const findUserByUsername = (username) => usersModel.find( {username: username});
+export const findUserByUsername = (username) => usersModel.findOne( {username: username});
 export const findUserByCredentials = (username, password) => usersModel.findOne({username: username, password: password});
 export const createUser = (user) => usersModel.create(user);
 export const deleteUser = (uid) => usersModel.deleteOne({_id: uid});
