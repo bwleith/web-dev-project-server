@@ -2,12 +2,12 @@ import mongoose from 'mongoose';
 
 const usersSchema = mongoose.Schema({
     username: String,
-    firstName: String,
-    lastName: String,
-    role: String,
-    email: String,
+    firstName: {type: String, default: ''},
+    lastName: {type: String, default: ''},
+    role: {type: String, default: 'Fan'},
+    email: {type: String, default: ''},
     password: String,
     time: {type: Date, default: Date.now}, // when the user joined
-    bio: String
+    bio: {type: String, default: ''}
 }, {collection: 'users'});
 export default usersSchema;

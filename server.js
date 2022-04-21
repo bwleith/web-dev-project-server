@@ -7,7 +7,10 @@ import favoritesController from './controllers/favorites-controller.js';
 import usersController from './controllers/users-controller.js';
 import authController from './controllers/auth-controller.js';
 const app = express();
-app.use(cors());
+app.use(cors({
+        credentials: true,
+        origin: 'http://localhost:3000'
+    }));
 app.use(session({
     secret: 'SECRETO',
     cookie: {secure: false}

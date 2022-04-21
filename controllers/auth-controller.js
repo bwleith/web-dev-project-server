@@ -29,6 +29,7 @@ const signup = async (req, res) => {
 
 const login = async (req, res) => {
     const credentials = req.body;
+    console.log('credentials: ', credentials);
     const profile = await usersDao
         .findUserByCredentials(credentials.username, credentials.password)
     if (profile) {
