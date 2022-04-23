@@ -15,7 +15,6 @@ const findLatestFavoritesByUsername = async (req, res) => {
 }
 
 const createFavorite = async (req, res) => {
-    console.log("inside createFavorite");
     console.log(req.body);
     const newFavorite = req.body;
     const status = await favoritesDao.createFavorite(newFavorite);
@@ -23,7 +22,6 @@ const createFavorite = async (req, res) => {
 }
 
 const deleteFavorite = async (req, res) => {
-    console.log("inside deleteFavorite controller method");
     const deleteFavorite = req.body;
     console.log('deleteFavorite: ', deleteFavorite);
     const status = await favoritesDao.deleteFavorite(deleteFavorite);
@@ -31,7 +29,6 @@ const deleteFavorite = async (req, res) => {
 }
 
 const checkFavorite = async(req, res) => {
-    console.log("inside checkFavorite controller method");
     const username = req.params.username;
     const imdbId = req.params.imdbId;
     const favorite = {

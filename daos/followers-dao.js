@@ -30,6 +30,7 @@ export const findReviewsByFollows = (username) => followersModel.aggregate(
             title: "$reviews.title",
             poster: "$reviews.poster",
             review: "$reviews.review",
+            imdbId: "$reviews.imdbId",
             time: "$reviews.time"
          }},
          {$sort: {time: -1}}

@@ -2,6 +2,7 @@ import usersDao from '../daos/users-dao.js';
 
 const usersController = (app) => {
     app.get('/api/users', findAllUsers);
+    app.get('/api/users/limit/:limit', findSomeUsers);
     app.get('/api/users/:id', findUserById);
     app.get('/api/users/username/:username', findUserByUsername);
     app.post('/api/users/credentials', findUserByCredentials);
@@ -15,6 +16,13 @@ const findAllUsers = async (req, res) => {
     const users = await usersDao.findAllUsers()
     res.json(users)
 }
+
+const findSomeUsers = async (req, res) => {
+    const limit = req.params['limit'];
+    const users = await usersDao.findSomeUsers(limit);
+    res.json(users);
+}
+
 const findUserById = async (req, res) => {
     console.log('inside findUserById controller method');
     const userId = req.params['id']
@@ -59,6 +67,7 @@ const updateUser = async (req, res) => {
     const user = req.body
     const userId = req.params['id']
     const status = await usersDao.updateUser(userId, user)
+    console.log('status: ', status);
     res.json(status)
 }
 const deleteUser = async (req, res) => {

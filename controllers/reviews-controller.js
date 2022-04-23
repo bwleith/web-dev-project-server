@@ -3,7 +3,7 @@ import reviewsDao from '../daos/reviews-dao.js';
 const reviewsController = (app) => {
     app.get('/api/reviews', findLatestReviews);
     app.post('/api/reviews', createReview);
-    app.delete('/api/reviews/:reviewId', deleteReview);
+    app.delete('/api/reviews', deleteReview);
     app.put('/api/reviews/:reviewId', deleteReview);
 }
 
@@ -35,8 +35,10 @@ const createReview = async(req, res) => {
 
 
 const deleteReview = async (req, res) => {
-    const reviewIdToDelete = req.params.reviewId;
-    const status = await reviewsDao.deleteReview(reviewIdToDelete);
+    console.log('inside deleteReview controller method');
+    const reviewToDelete = req.body;
+    console.log('reviewToDelete: ', reviewToDelete)
+    const status = await reviewsDao.deleteReview(reviewToDelete);
     res.send(status);
 }
 
