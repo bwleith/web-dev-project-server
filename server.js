@@ -7,6 +7,7 @@ import favoritesController from './controllers/favorites-controller.js';
 import usersController from './controllers/users-controller.js';
 import authController from './controllers/auth-controller.js';
 import followersController from './controllers/followers-controller.js';
+import likesController from './controllers/likes-controller.js';
 const app = express();
 app.use(cors({
         credentials: true,
@@ -22,6 +23,7 @@ favoritesController(app);
 usersController(app);
 authController(app);
 followersController(app);
+likesController(app);
 app.listen(4000);
 const CONNECTION_STRING = 'mongodb://localhost:27017/project';
 mongoose.connect(CONNECTION_STRING);

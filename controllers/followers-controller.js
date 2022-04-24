@@ -51,6 +51,7 @@ const findReviewsByFollows = async(req, res) => {
     const username = req.params.username;
     console.log('findReviewsByFollows: ', username);
     const status = await followersDao.findReviewsByFollows(username);
+    console.log('status: ', status);
     res.json(status);
 }
 

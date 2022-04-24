@@ -33,6 +33,12 @@ export const findReviewsByFollows = (username) => followersModel.aggregate(
             imdbId: "$reviews.imdbId",
             time: "$reviews.time"
          }},
+         {$lookup:
+                 {from: "likes",
+                  localField: "_id",
+                  foreignField: "_reviewId",
+                  as: "likes"
+                 }},
          {$sort: {time: -1}}
     ])
 
